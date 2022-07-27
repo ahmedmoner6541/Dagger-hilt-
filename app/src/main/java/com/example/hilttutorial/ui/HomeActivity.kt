@@ -1,44 +1,43 @@
 package com.example.hilttutorial.ui
 
 import android.os.Bundle
-import android.util.Log
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hilttutorial.R
+import com.example.hilttutorial.ViewModelFactory
 import com.example.hilttutorial.adapter.MyAdapter
-import com.example.hilttutorial.presenter.HomePresenter
+import com.example.hilttutorial.repository.HomeRepository
 
 
-class HomeActivity : AppCompatActivity() ,Contract.Iview{
+class HomeActivity : AppCompatActivity() {
     private val TAG = "HomeActivity"
     lateinit var rv: RecyclerView
     lateinit var adapter: MyAdapter
 
-    lateinit var  presenter:Contract.Ipresenter
+    private lateinit var viewModel: HomeViewModel
+    private lateinit var viewModelFactory: ViewModelFactory
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         rv = findViewById(R.id.rv)
-        presenter = HomePresenter(this)
+
+         viewModel =
+            ViewModelProvider(this, ViewModelFactory(HomeRepository())).get(
+                HomeViewModel::class.java
+            )
 
         adapter = MyAdapter()
         rv.adapter = adapter
-        adapter.setData(presenter.getList())
+        adapter.setData(viewModel.getlist())
 
 
-
-    }
-
-
-    override fun onSuccess(result: String) {
-        Log.d(TAG, "onSuccess:${result} ")
-    }
-
-    override fun onfailure(result: String) {
-        Log.d(TAG, "onSuccess:${result} ")
     }
 
 
 }
+
 

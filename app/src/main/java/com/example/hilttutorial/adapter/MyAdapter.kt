@@ -11,10 +11,11 @@ import com.example.hilttutorial.R
 import com.example.hilttutorial.model.Model
 
 class MyAdapter : RecyclerView.Adapter<MyAdapter.MyVh>() {
-    private  val TAG = "MyAdapter"
-    private lateinit var testList: ArrayList<Model>
+    private val TAG = "MyAdapter"
+    private var testList: List<Model> = arrayListOf()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyVh {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.each_row,parent,false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.each_row, parent, false)
         return MyVh(itemView)
     }
 
@@ -22,14 +23,14 @@ class MyAdapter : RecyclerView.Adapter<MyAdapter.MyVh>() {
         val curentItem = testList[position]
         holder.iv_image.setImageResource(curentItem.image)
         holder.tv_name.text = curentItem.name
-        Log.d(TAG, "onBindViewHolder: "+curentItem.name)
+        Log.d(TAG, "onBindViewHolder: " + curentItem.name)
     }
 
     override fun getItemCount(): Int {
         return testList.size
     }
 
-    fun setData(postList: ArrayList<Model>) {
+    fun setData(postList: List<Model>) {
         this.testList = postList
         notifyDataSetChanged()
     }
