@@ -9,6 +9,7 @@ import com.example.hilttutorial.repository.HomeRepository
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+
 class HomeViewModel @Inject constructor(
     private val homeRepository: HomeRepository
 ): ViewModel() {
@@ -17,7 +18,6 @@ class HomeViewModel @Inject constructor(
     val user:LiveData<List<Model>> get() = mutableLiveDatalist
 
     fun getUser()= viewModelScope.launch {
-
         mutableLiveDatalist.postValue(homeRepository.myList())
     }
 

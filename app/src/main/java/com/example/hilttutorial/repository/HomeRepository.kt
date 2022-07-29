@@ -7,14 +7,12 @@ import javax.inject.Inject
 
 class HomeRepository @Inject constructor()  {
 
-
-
     fun myList(): ArrayList<Model> { //this method returns an arraylist
         var lst = ArrayList<Model>()
         var post1 = Model("ahmed", R.drawable.pokimon)
-        var post2 = Model("ahmed", R.drawable.pokimon)
-        var post3 = Model("ahmed", R.drawable.pokimon)
-        var post4 = Model("ahmed", R.drawable.pokimon)
+        var post2 = Model("moner", R.drawable.pokimon)
+        var post3 = Model("abdou", R.drawable.pokimon)
+        var post4 = Model("sara", R.drawable.pokimon)
         lst.add(post1)
         lst.add(post2)
         lst.add(post3)
