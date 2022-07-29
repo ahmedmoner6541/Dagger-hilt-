@@ -3,8 +3,11 @@ package com.example.hilttutorial.repository
 import androidx.lifecycle.LiveData
 import com.example.hilttutorial.R
 import com.example.hilttutorial.model.Model
+import javax.inject.Inject
 
-class HomeRepository() {
+class HomeRepository @Inject constructor()  {
+
+
 
     fun myList(): ArrayList<Model> { //this method returns an arraylist
         var lst = ArrayList<Model>()

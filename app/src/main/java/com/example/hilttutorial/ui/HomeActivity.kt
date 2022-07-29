@@ -9,14 +9,17 @@ import com.example.hilttutorial.R
 import com.example.hilttutorial.ViewModelFactory
 import com.example.hilttutorial.adapter.MyAdapter
 import com.example.hilttutorial.repository.HomeRepository
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
     private val TAG = "HomeActivity"
     lateinit var rv: RecyclerView
     lateinit var adapter: MyAdapter
 
-    private lateinit var viewModel: HomeViewModel
+    @Inject
+     lateinit var viewModel: HomeViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,7 +30,7 @@ class HomeActivity : AppCompatActivity() {
         adapter = MyAdapter()
         rv.adapter = adapter
 
-        viewModel = ViewModelProvider(this, ViewModelFactory(HomeRepository())).get(HomeViewModel::class.java)
+        //viewModel = ViewModelProvider(this, ViewModelFactory(HomeRepository())).get(HomeViewModel::class.java)
 
         viewModel.getUser()
         viewModel.user.observe(this, Observer {

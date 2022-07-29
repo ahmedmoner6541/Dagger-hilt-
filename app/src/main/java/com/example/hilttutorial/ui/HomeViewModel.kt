@@ -7,8 +7,9 @@ import androidx.lifecycle.viewModelScope
 import com.example.hilttutorial.model.Model
 import com.example.hilttutorial.repository.HomeRepository
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class HomeViewModel(
+class HomeViewModel @Inject constructor(
     private val homeRepository: HomeRepository
 ): ViewModel() {
 
