@@ -1,8 +1,8 @@
 package com.example.hilttutorial.ui
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hilttutorial.R
@@ -17,22 +17,24 @@ class HomeActivity : AppCompatActivity() {
     lateinit var adapter: MyAdapter
 
     private lateinit var viewModel: HomeViewModel
-    private lateinit var viewModelFactory: ViewModelFactory
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
         rv = findViewById(R.id.rv)
-
-         viewModel =
-            ViewModelProvider(this, ViewModelFactory(HomeRepository())).get(
-                HomeViewModel::class.java
-            )
-
         adapter = MyAdapter()
         rv.adapter = adapter
-        adapter.setData(viewModel.getlist())
+
+        viewModel = ViewModelProvider(this, ViewModelFactory(HomeRepository())).get(HomeViewModel::class.java)
+
+        viewModel.getUser()
+        viewModel.user.observe(this, Observer {
+            adapter.setData(it)
+        })
+
+//
 
 
     }
