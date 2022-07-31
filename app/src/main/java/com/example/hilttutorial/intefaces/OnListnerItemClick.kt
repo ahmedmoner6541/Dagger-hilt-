@@ -1,8 +1,10 @@
 package com.ahmedmoner.intefaces
 
- import com.example.hilttutorial.model.Model
+
+import com.example.kotlinproject.data.model.responses.ProductResponse.ProductResponse
+
 
 
 interface OnListnerItemClick {
-    fun onItemClick(model:Model)
+    fun onItemClick(model: ProductResponse)
 }

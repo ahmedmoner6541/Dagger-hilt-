@@ -1,12 +1,32 @@
 package com.example.hilttutorial.repository
 
-import androidx.lifecycle.LiveData
+import android.util.Log
 import com.example.hilttutorial.R
-import com.example.hilttutorial.model.Model
+
+import com.example.hilttutorial.model.source.network.ApiProuct
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
-class HomeRepository @Inject constructor()  {
+class HomeRepository @Inject constructor(
+    private val api:ApiProuct
+) : BaseRepositoty() {
 
+    suspend fun getAllProduct()= safeApiCall {
+        api.getAllProduct()
+    }
+}
+
+
+/*    suspend fun getAllProduct(): Flow<List<ProductResponse>> = flow{
+        val response = api.getAllProduct()
+        Log.d(TAG, "getAllProduct: ${response}")
+        emit(response)
+       }.flowOn(Dispatchers.IO)
+    }*/
+/*
     fun myList(): ArrayList<Model> { //this method returns an arraylist
         var lst = ArrayList<Model>()
         var post1 = Model("ahmed", R.drawable.pokimon)
@@ -18,10 +38,8 @@ class HomeRepository @Inject constructor()  {
         lst.add(post3)
         lst.add(post4)
         return lst
-    }
+    }*/
 
 
-
-}
 
 
