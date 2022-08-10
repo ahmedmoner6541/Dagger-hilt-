@@ -7,4 +7,5 @@ import com.example.kotlinproject.data.model.responses.ProductResponse.ProductRes
 
 interface OnListnerItemClick {
     fun onItemClick(model: ProductResponse)
+
 }

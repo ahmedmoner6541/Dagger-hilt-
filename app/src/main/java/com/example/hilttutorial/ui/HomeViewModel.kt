@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.hilttutorial.repository.HomeRepository
+import com.example.kotlinproject.data.model.responses.ProductResponse.Product
 import com.example.kotlinproject.data.model.responses.ProductResponse.ProductResponse
 import com.kadirkuruca.newsapp.util.Resource
 import kotlinx.coroutines.launch
@@ -14,13 +15,41 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val homeRepository: HomeRepository
 ): ViewModel() {
-    private val _product: MutableLiveData<Resource<ProductResponse>> = MutableLiveData()
-    val product: LiveData<Resource<ProductResponse>>
-        get() = _product
-    fun getAllProducts()= viewModelScope.launch {
-        _product.value = Resource.Loading
-        _product.value = homeRepository.getAllProduct()
+    private val _productApi: MutableLiveData<Resource<ProductResponse>> = MutableLiveData()
+    val productApi: LiveData<Resource<ProductResponse>>
+        get() = _productApi
+
+
+    private val _productDB: MutableLiveData<List<Product>> = MutableLiveData()
+    val productDB: LiveData<List<Product>>
+        get() = _productDB
+
+
+
+
+    fun upsert(product: List<Product>) {
+        homeRepository.upsert(product)
+
     }
+
+
+    fun getSavedAllProduct()  =
+        homeRepository.getSavedAllProduct()
+
+
+
+
+
+    fun getAllProductApi()= viewModelScope.launch {
+        _productApi.value = Resource.Loading
+        _productApi.value = homeRepository.getAllProductApi()
+    }
+  /*  fun getAllProduct()= viewModelScope.launch {
+        _productDB.value = Resource.Loading
+        _productDB.value = homeRepository.getAllProductDB()
+    }
+    */
+
 }
 
 
