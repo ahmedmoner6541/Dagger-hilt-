@@ -1,8 +1,8 @@
-package com.example.hilttutorial.ui
+package com.EcommerceApplication.ui.home
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.hilttutorial.databinding.ActivityHomeBinding
+import com.EcommerceApplication.databinding.ActivityHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -1,7 +1,7 @@
 package com.ahmedmoner.intefaces
 
 
-import com.example.kotlinproject.data.model.responses.ProductResponse.ProductResponse
+import com.EcommerceApplication.data.remote.response.product.ProductResponse
 
 
 

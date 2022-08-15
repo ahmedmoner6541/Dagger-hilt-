@@ -1,4 +1,4 @@
-package com.example.hilttutorial
+package com.EcommerceApplication
 
 import org.junit.Test
 
