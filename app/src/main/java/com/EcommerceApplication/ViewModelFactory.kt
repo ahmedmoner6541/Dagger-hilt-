@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.EcommerceApplication.data.remote.network.ApiProuct
 import com.EcommerceApplication.repository.ProductRepository
-import com.EcommerceApplication.ui.home.ProductViewModel
+import com.EcommerceApplication.ui.product.ProductViewModel
 
 class ViewModelFactory(
     private val homeRepository: ProductRepository,

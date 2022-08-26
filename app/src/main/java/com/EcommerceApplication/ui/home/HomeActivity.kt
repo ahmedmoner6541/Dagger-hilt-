@@ -1,6 +1,7 @@
 package com.EcommerceApplication.ui.home
 
 import android.os.Bundle
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import com.EcommerceApplication.databinding.ActivityHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,12 +19,26 @@ class HomeActivity : AppCompatActivity() {
         setContentView(view)
 
 
+    }
+    override fun onResume() {
+        super.onResume()
+        val supportActionBar: ActionBar? = (this as AppCompatActivity).supportActionBar
+        if (supportActionBar != null) supportActionBar.hide()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        val supportActionBar: ActionBar? = (this as AppCompatActivity).supportActionBar
+        if (supportActionBar != null) supportActionBar.show()
+    }
+
+}
 
 
         
-    }
 
 
-}
+
+
 
 

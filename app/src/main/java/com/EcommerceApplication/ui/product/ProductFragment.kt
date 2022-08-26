@@ -1,20 +1,18 @@
-package com.example.hilttutorial.ui
+package com.EcommerceApplication.ui.product
 
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import com.ahmedmoner.intefaces.OnListnerItemClick
-import com.example.hilttutorial.adapter.ProductAdapter
-import com.example.hilttutorial.databinding.FragmentHomeBinding
-import com.example.hilttutorial.util.visable
-import com.example.kotlinproject.data.model.responses.ProductResponse.Product
-import com.example.kotlinproject.data.model.responses.ProductResponse.ProductResponse
+import com.EcommerceApplication.adapter.ProductAdapter
+import com.EcommerceApplication.data.models.Product
+import com.EcommerceApplication.databinding.FragmentHomeBinding
+import com.EcommerceApplication.util.visable
+import com.example.kotlinproject.ui.base.BaseFragment
+
 import com.kadirkuruca.newsapp.util.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
@@ -23,33 +21,23 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class HomeFragment : Fragment(), OnListnerItemClick {
+class ProductFragment : BaseFragment<FragmentHomeBinding>(),
+        ProductAdapter.OnProductClick
+{
     private val TAG = "HomeFragment"
 
     @Inject
-    lateinit var viewModel: HomeViewModel
+    lateinit var viewModel: ProductViewModel
     lateinit var adapter: ProductAdapter
 
-    private lateinit var binding: FragmentHomeBinding
-    private lateinit var navController: NavController
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
-        navController = findNavController()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         setupRecyclerView()
         setupObservers()
 
-        return binding.root
-
-
     }
-
     private fun setupObservers() {
         viewModel.getAllProductApi()
         viewModel.productApi.observe(viewLifecycleOwner, Observer {
@@ -81,19 +69,31 @@ class HomeFragment : Fragment(), OnListnerItemClick {
            if (it != null) {
                adapter.setData(it)
                binding.progressBar.visable(false)
-               Log.d(TAG, "test:local data  ")
+               Log.d(TAG, "getSavedAllProduct: ")
            }
         })
 
     }
 
-    override fun onItemClick(model: ProductResponse) {
-
-    }
+  
 
     private fun setupRecyclerView() {
         adapter = ProductAdapter()
-        adapter.clickListner = this // always i forget it
+        adapter.onProductClick = this
         binding.rv.adapter = adapter
     }
+
+
+
+    override fun getFragmentBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentHomeBinding
+            = FragmentHomeBinding.inflate(inflater,container,false)
+
+    override fun onItemClick(product: Product) {
+            val action =
+                ProductFragmentDirections.actionHomeFragmentToDetailsProductFragment(product)
+            findNavController().navigate(action)
+
+    }
+
+
 }
