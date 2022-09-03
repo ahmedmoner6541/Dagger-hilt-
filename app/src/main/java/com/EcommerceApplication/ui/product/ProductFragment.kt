@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.EcommerceApplication.R
 import com.EcommerceApplication.adapter.ProductAdapter
 import com.EcommerceApplication.data.models.Product
 import com.EcommerceApplication.databinding.FragmentHomeBinding
@@ -37,12 +38,18 @@ class ProductFragment : BaseFragment<FragmentHomeBinding>(),
         setupRecyclerView()
         setupObservers()
 
+        binding.button.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_cartFragment)
+
+        }
+
     }
     private fun setupObservers() {
         viewModel.getAllProductApi()
         viewModel.productApi.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is Resource.Success -> {
+
                     binding.progressBar.visable(false)
                     adapter.setData(it.value.data.products)
                     CoroutineScope(Dispatchers.IO).launch {
@@ -90,7 +97,7 @@ class ProductFragment : BaseFragment<FragmentHomeBinding>(),
 
     override fun onItemClick(product: Product) {
             val action =
-                ProductFragmentDirections.actionHomeFragmentToDetailsProductFragment(product)
+                ProductFragmentDirections.actionHomeFragmentToDetailsProductFragment(product,null)
             findNavController().navigate(action)
 
     }

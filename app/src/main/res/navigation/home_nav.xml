@@ -8,27 +8,46 @@
         android:id="@+id/homeFragment"
         android:name="com.EcommerceApplication.ui.product.ProductFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_detailsProductFragment"
-            app:destination="@id/detailsProductFragment" />
+            app:destination="@id/detailsProductFragment"
+            />
+        <action
+            android:id="@+id/action_homeFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsProductFragment"
-        android:name="com.EcommerceApplication.ui.detailsProduct.DetailsProductFragment"
+        android:name="com.EcommerceApplication.ui.detailsProduct.ProductDetailsFragment"
         android:label="fragment_details_product"
-        tools:layout="@layout/fragment_details_product" >
-
+        tools:layout="@layout/fragment_product_details"
+       >
         <argument
             android:name="product"
-            app:argType="com.EcommerceApplication.data.models.Product" />
+            app:argType="com.EcommerceApplication.data.models.Product"
+            app:nullable="true" />
+
         <action
             android:id="@+id/action_detailsProductFragment_to_cartFragment"
-            app:destination="@id/cartFragment" />
+            app:destination="@id/cartFragment"
+            app:popUpTo="@id/homeFragment"
+        />
+        <argument
+            android:name="cartItem"
+            app:argType="com.EcommerceApplication.data.remote.response.cart.CartItem"
+            app:nullable="true" />
     </fragment>
+
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.EcommerceApplication.ui.cart.CartFragment"
         android:label="fragment_cart"
-        tools:layout="@layout/fragment_cart" />
+        tools:layout="@layout/fragment_cart">
+
+
+        <action
+            android:id="@+id/action_cartFragment_to_detailsProductFragment"
+            app:destination="@id/detailsProductFragment" />
+    </fragment>
 </navigation>

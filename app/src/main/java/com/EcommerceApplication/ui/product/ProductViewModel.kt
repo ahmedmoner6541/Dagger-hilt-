@@ -6,8 +6,10 @@ import androidx.lifecycle.viewModelScope
 import com.EcommerceApplication.repository.ProductRepository
 import com.EcommerceApplication.data.models.Product
 import com.EcommerceApplication.data.remote.response.addToCart.AddToCartResponse
+import com.EcommerceApplication.data.remote.response.cart.CartResponse
 import com.EcommerceApplication.data.remote.response.product.ProductResponse
 import com.EcommerceApplication.data.remote.response.productDetailes.ProductDetailesResponse
+import com.EcommerceApplication.data.remote.response.updateCart.UpdateCartResponse
 import com.kadirkuruca.newsapp.util.Resource
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -20,17 +22,6 @@ class ProductViewModel @Inject constructor(
     private val _productApi: MutableLiveData<Resource<ProductResponse>> = MutableLiveData()
     val productApi: LiveData<Resource<ProductResponse>>
         get() = _productApi
-
-
-    private val _productDetails: MutableLiveData<Resource<ProductDetailesResponse>> = MutableLiveData()
-    val productDetails: LiveData<Resource<ProductDetailesResponse>>
-        get() = _productDetails
-
-
-
-   private val _addToCart: MutableLiveData<Resource<AddToCartResponse>> = MutableLiveData()
-    val addToCart: LiveData<Resource<AddToCartResponse>>
-           get() = _addToCart
 
 
 
@@ -58,18 +49,9 @@ class ProductViewModel @Inject constructor(
         homeRepository.addToCart(product_id)
     }
  */
-    fun addToCart(product_id:Int)= viewModelScope.launch {
-        _addToCart.value = Resource.Loading
-        _addToCart.value = productRepository.addToCart(product_id)
-    }
 
 
 
-
-    fun getproductDetails(id:String)= viewModelScope.launch {
-        _productDetails.value = Resource.Loading
-        _productDetails.value = productRepository.getproductDetails(id)
-    }
 
 
 
