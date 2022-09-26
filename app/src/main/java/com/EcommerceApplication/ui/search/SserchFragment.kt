@@ -1,22 +1,17 @@
 package com.EcommerceApplication.ui.search
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.EcommerceApplication.adapter.SearchAdapter
 import com.EcommerceApplication.data.remote.response.searchProduct.toProductAdapterModel
 import com.EcommerceApplication.databinding.FragmentSserchBinding
 import com.EcommerceApplication.ui.product.ProductViewModel
-import com.EcommerceApplication.util.ProductModel
-import com.EcommerceApplication.util.visable
+import com.EcommerceApplication.ui.product.ProductModel
 import com.example.kotlinproject.ui.base.BaseFragment
 import com.kadirkuruca.newsapp.util.Resource
 import dagger.hilt.android.AndroidEntryPoint
@@ -53,7 +48,7 @@ class SserchFragment : BaseFragment<FragmentSserchBinding>(),
                    hideProgress(binding.loaderLayout)
 
                     adapter.setData(it.value.data.data.toProductAdapterModel())
-                    Log.d(TAG, "setupObservers: success${it.value.data}")
+                    Log.d(TAG, "setupObservers: success${it.value.data.data}")
                 }
 
                 is Resource.Loading -> {

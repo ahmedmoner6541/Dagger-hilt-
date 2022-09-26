@@ -40,28 +40,29 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:text="أداة تمرين حديد كيتل بيل من ستارك، 24 كجم"
-                android:textColor="#000000"
+                 android:textColor="#000000"
                 android:textSize="16sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
+                android:orientation="vertical"
                 >
 
 
                 <TextView
 
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:text="price   "
                     android:textColor="#FF0000"
                     android:textSize="30sp"
-                    android:visibility="gone" />
+                    android:gravity="center"
+                    android:visibility="visible" />
 
                 <TextView
                     android:id="@+id/pricr_product"
@@ -69,8 +70,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:text=" 35 "
-                    android:textColor="#FF0000"
+                     android:textColor="#FF0000"
                     android:textSize="30sp" />
                 <TextView
 
@@ -132,8 +132,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_marginStart="6dp"
                     android:layout_toRightOf="@id/tv_percentage"
-                    android:text=" 30 "
-                    android:textColor="#FF0000"
+                     android:textColor="#FF0000"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -145,8 +144,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:gravity="center"
-                android:text="discription   discription   discription   discription   discription   discription   discription   discription   discription   discription   discription   discription   discription   discription   discription   discription   discription   discription   discription   discription   discription   discription   discription   discription   discription   discription   discription   discription   discription   discription   discription   discription   discription   discription   discription   "
-                android:textColor="#80000000"
+                 android:textColor="#80000000"
                 android:textSize="16sp" />
 
             <LinearLayout
@@ -169,8 +167,8 @@
                     android:insetRight="0dp"
                     android:insetBottom="0dp"
                     app:cornerRadius="50dp"
-                    app:iconGravity="textStart"
                     app:icon="@drawable/ic_baseline_remove_product"
+                    app:iconGravity="textStart"
                     app:iconPadding="0dp"
                     app:iconSize="35dp"
                     app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MaterialComponents.MaterialCalendar.Day" />

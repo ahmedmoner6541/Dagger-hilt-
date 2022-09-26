@@ -19,6 +19,8 @@ class OrderAdapter : RecyclerView.Adapter<OrderAdapter.OrderVH>() {
             parent,
             false
         ))
+
+  //      جيب لاوردرات من تفاص
     }
     fun setData(orderList: List<Order>) {
         this.orderItemList = orderList

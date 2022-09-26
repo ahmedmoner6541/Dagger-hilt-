@@ -6,12 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import com.EcommerceApplication.adapter.FavoriteProductAdapter
-import com.EcommerceApplication.data.remote.response.favorite.getFavorites.DataX
 import com.EcommerceApplication.data.remote.response.favorite.getFavorites.Product
 import com.EcommerceApplication.databinding.FragmentFavoriteProductsBinding
 import com.EcommerceApplication.ui.product.ProductViewModel
-import com.EcommerceApplication.util.Snackbar
 import com.example.kotlinproject.ui.base.BaseFragment
 import com.kadirkuruca.newsapp.util.Resource
 import dagger.hilt.android.AndroidEntryPoint

@@ -21,10 +21,10 @@
             android:id="@+id/ship_date_label_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-             android:textColor="@color/dark_gray"
+            android:textColor="@color/dark_gray"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="Date shoping" />
+            android:text="تاريخ الطلب" />
 
         <TextView
             android:id="@+id/ship_date_value_tv"
@@ -40,9 +40,9 @@
             android:id="@+id/ship_add_label_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+             android:text="العنوان"
             android:layout_marginTop="16dp"
-            android:text="Address"
-             android:textColor="@color/dark_gray"
+            android:textColor="@color/dark_gray"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ship_date_label_tv" />
 
@@ -54,11 +54,59 @@
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@+id/ship_add_label_tv"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/ship_add_label_tv"
             app:layout_constraintTop_toTopOf="@+id/ship_add_label_tv"
             app:layout_constraintVertical_bias="0.0"
-            tools:text="123, Sonmwe Soijr, Ouiwy qwei, Uytwuf, India, 208242" />
+            tools:text="123, Sonmwe Soijr,  " />
+
+        <TextView
+            android:id="@+id/name_label_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="الاسم"
+            android:textColor="@color/dark_gray"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ship_add_label_tv" />
+
+        <TextView
+            android:id="@+id/name_value_tv"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="6dp"
+            android:textAlignment="textEnd"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/phone_label_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/name_label_tv"
+            app:layout_constraintTop_toTopOf="@+id/name_label_tv"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="ahmed moner" />
+
+        <TextView
+            android:id="@+id/phone_label_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="الهاتف"
+            android:textColor="@color/dark_gray"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/name_label_tv" />
+
+        <TextView
+            android:id="@+id/phone_value_tv"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="6dp"
+            android:textAlignment="textEnd"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/phone_label_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/phone_label_tv"
+            app:layout_constraintTop_toTopOf="@+id/phone_label_tv"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="+971542373741" />
 
         <ImageView
             android:id="@+id/card_dotted_divider"
@@ -68,7 +116,7 @@
             android:layerType="software"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ship_add_value_tv"
+            app:layout_constraintTop_toBottomOf="@+id/phone_label_tv"
             app:srcCompat="@drawable/dotted_line_drawable" />
 
         <TextView
@@ -76,7 +124,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="current state "
+            android:text="حاله الطلب "
              android:textColor="@color/dark_gray"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"

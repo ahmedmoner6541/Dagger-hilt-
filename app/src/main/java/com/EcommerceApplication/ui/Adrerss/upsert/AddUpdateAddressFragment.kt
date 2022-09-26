@@ -84,7 +84,7 @@ class AddUpdateAddressFragment : BaseFragment<FragmentAddUpdateAddressBinding>()
         val newCity = binding.etCityPirsonAddress.text.toString()
         val newRegion = binding.etRegionsPersonAddress.text.toString()
         val newDetails = binding.etDetailsPesonAddress.text.toString()
-        val newNotes = binding.etNotePesonAddress.text.toString()
+        val newNotes = binding.etNotePesonAddress.text.toString()  //phone
 
         var newAddress = UpdateAddressRequest(newName, newCity, newRegion, newDetails, 0.0, 0.0, newNotes)
 

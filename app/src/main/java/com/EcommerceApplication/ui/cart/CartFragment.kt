@@ -11,14 +11,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.EcommerceApplication.R
-import com.EcommerceApplication.adapter.CartAdapter
-import com.EcommerceApplication.data.remote.response.CartItem
 import com.EcommerceApplication.data.remote.response.toProductAdapterModel
 import com.EcommerceApplication.databinding.FragmentCartBinding
 import com.EcommerceApplication.databinding.LayoutCircularLoaderBinding
-import com.EcommerceApplication.ui.product.HomeFragmentDirections
 import com.EcommerceApplication.ui.product.ProductViewModel
-import com.EcommerceApplication.util.ProductModel
+import com.EcommerceApplication.ui.product.ProductModel
 import com.EcommerceApplication.util.Snackbar
 import com.EcommerceApplication.util.handleApiError
 import com.example.kotlinproject.ui.base.BaseFragment
@@ -202,7 +199,7 @@ class CartFragment : BaseFragment<FragmentCartBinding>(),
     }
 
     override fun deleteItemInCartClick(
-            cartItem:ProductModel,
+        cartItem: ProductModel,
         productIdInCart: Int,
         quantity: Int,
         itemBinding: LayoutCircularLoaderBinding,

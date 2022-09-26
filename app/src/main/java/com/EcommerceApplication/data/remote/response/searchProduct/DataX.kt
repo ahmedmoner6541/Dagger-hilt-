@@ -2,7 +2,7 @@ package com.EcommerceApplication.data.remote.response.searchProduct
 
 
 import android.os.Parcelable
-import com.EcommerceApplication.util.ProductModel
+import com.EcommerceApplication.ui.product.ProductModel
 import kotlinx.android.parcel.Parcelize
 import kotlinx.serialization.SerialName
 

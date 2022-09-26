@@ -12,3 +12,21 @@ data class Data(
     val in_cart: Boolean,
     val images: List<String>
 )
+
+
+/*
+  fun mapFromDomainModel(product: Data): ProductModel {
+    return ProductModel(
+        id = product.id,
+        price = product.price.toDouble(),
+        oldPrice =product.old_price.toDouble(),
+        discount = product.discount,
+        image = product.image,
+        name = product.name,
+        description = product.description,
+        inFavorites = product.in_favorites,
+        inCart = product.in_cart,
+        images = product.images
+    )
+}
+*/

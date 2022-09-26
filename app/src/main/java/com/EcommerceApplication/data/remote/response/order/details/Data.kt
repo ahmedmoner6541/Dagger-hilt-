@@ -23,7 +23,7 @@ data class Data(
     @SerialName("promo_code")
     val promoCode: String,
     @SerialName("payment_method")
-    val paymentMethod: String,
+    val payment_method: String,
     @SerialName("date")
     val date: String,
     @SerialName("status")

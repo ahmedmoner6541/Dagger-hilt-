@@ -24,7 +24,7 @@ class ProductViewModel @Inject constructor(
 
 
 
-    // get home date
+    // get home date from api
     private val _productApi: MutableLiveData<Resource<ProductResponse>> = MutableLiveData()
     val productApi: LiveData<Resource<ProductResponse>>
         get() = _productApi
@@ -33,6 +33,7 @@ class ProductViewModel @Inject constructor(
         _productApi.value = Resource.Loading
         _productApi.value = productRepository.getAllProductApi()
     }
+
 
     //getSearchProductName
     private val _searchProductnameApi: MutableLiveData<Resource<SearchProductResponse>> = MutableLiveData()
@@ -62,6 +63,8 @@ class ProductViewModel @Inject constructor(
         _addFavorite.value = Resource.Loading
         _addFavorite.value = productRepository.setProductToFavoriteById(productId)
     }
+
+
     private val _updateProductQuantityInCart: MutableLiveData<Resource<CartUpdateQuantityResponse>> = MutableLiveData()
     val updateProductQuantityInCart: LiveData<Resource<CartUpdateQuantityResponse>> get() = _updateProductQuantityInCart
 
@@ -69,13 +72,6 @@ class ProductViewModel @Inject constructor(
         _updateProductQuantityInCart.value = Resource.Loading
         _updateProductQuantityInCart.value = productRepository.updateProductQuantityInCart(id,totalquantity)
     }
-
-    private val _productDB: MutableLiveData<List<Product>> = MutableLiveData()
-    val productDB: LiveData<List<Product>>
-        get() = _productDB
-
-
-
 
 
     private val _addProductToCart:MutableLiveData<Resource<AddToCartResponse>> = MutableLiveData()
@@ -85,11 +81,28 @@ class ProductViewModel @Inject constructor(
         _addProductToCart.value = productRepository.addOrDeleteProductToCartById(id)
     }
 
+/*
+
+    private val _productDB: MutableLiveData<List<Product>> = MutableLiveData()
+    val productDB: LiveData<List<Product>>
+        get() = _productDB
+
+*/
+
 
 
     fun upsert(product: List<Product>) =  productRepository.upsert(product)
 
+
     fun getSavedAllProduct()  = productRepository.getSavedAllProduct()
+
+ /*   private val _getSavedData:MutableLiveData<Resource<List<Product>>> = MutableLiveData()
+    val getSavedData :LiveData<Resource<List<Product>>> get() = _getSavedData
+
+    fun getSavedData()=viewModelScope.launch {
+        _getSavedData.value = Resource.Loading
+        _getSavedData.value =  productRepository.getSavedAllProduct()
+    }*/
 
 
     private val _cart:MutableLiveData<Resource<CartRespo>> = MutableLiveData()

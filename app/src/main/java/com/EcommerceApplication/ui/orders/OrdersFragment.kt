@@ -2,23 +2,16 @@ package com.EcommerceApplication.ui.orders
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.EcommerceApplication.R
-import com.EcommerceApplication.adapter.ProductAdapter
 import com.EcommerceApplication.databinding.FragmentOrdersBinding
-import com.EcommerceApplication.ui.product.ProductViewModel
 import com.EcommerceApplication.util.handleApiError
 import com.example.kotlinproject.ui.base.BaseFragment
 import com.kadirkuruca.newsapp.util.Resource
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -42,11 +35,16 @@ class OrdersFragment : BaseFragment<FragmentOrdersBinding>(),
                     is Resource.Success -> {
                         adapter.setData(it.value.data.data)
                         Log.d(TAG, "setupObservers: Success")
+                        showProgress(binding.loaderLayout)
+                        hideProgress(binding.loaderLayout)
+
                     }
                     is Resource.Loading -> {
                         Log.d(TAG, "setupObservers: Loading")
+                        showProgress(binding.loaderLayout)
                     }
                     is Resource.Failure -> handleApiError(it) {
+                        showProgress(binding.loaderLayout)
                         Log.d(TAG, "setupObservers: Failure")
                         setupObservers()
                     }
@@ -64,6 +62,8 @@ class OrdersFragment : BaseFragment<FragmentOrdersBinding>(),
     private fun setupRecyclerView() {
         adapter = OrderAdapter()
          binding.rvOrders.adapter = adapter
+        adapter.onOrderclickListnener = this
+
     }
 
     override fun onClickItem(id: Int) {

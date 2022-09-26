@@ -24,6 +24,10 @@ class ProductRepository @Inject constructor(
     suspend fun getAllProductApi() = safeApiCall {
         api.getAllProduct(token)
     }
+    suspend fun getSearchProduct(searchName:String) = safeApiCall {
+         api.getSearchProduct(token, searchName )
+    }        // TODO: token is not work for this in cart variable is not avaliable
+
 
     suspend fun getFavorite() = safeApiCall {
         api.geFavorite(token)
@@ -76,7 +80,7 @@ class ProductRepository @Inject constructor(
         Log.d("TAG", "addOrder:paymentMethod =  ${addOrderRequest.payment_method}")
         Log.d("TAG", "addOrder: ${addOrderRequest.use_points}")
 
-        api.addOrder(token, addOrderRequest)
+        api.addOdrer(token, addOrderRequest)
     }
 
     suspend fun orderDetails(orderId: String) = safeApiCall {

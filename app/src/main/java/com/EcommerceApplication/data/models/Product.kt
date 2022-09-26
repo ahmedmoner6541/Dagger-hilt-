@@ -6,6 +6,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.EcommerceApplication.data.models.converters.ImageConverters
+import com.EcommerceApplication.ui.product.ProductModel
 import kotlinx.parcelize.Parcelize
 import java.sql.Types.BLOB
 
@@ -27,3 +28,37 @@ data class Product(
     val price: Double,
 )
  : Parcelable
+
+fun List<Product>.toProductAdapterModel(): List<ProductModel> {
+    return map {
+        ProductModel(
+            description = it.description,
+            discount = it.discount,
+            id = it.id,
+            image = it.image,
+            images = it.images,
+            inCart = it.in_cart,
+            inFavorites = it.in_favorites,
+            name = it.name,
+            oldPrice = it.old_price,
+            price = it.price
+        )
+    }
+}
+
+fun List<Product>.toProductAdapterBanner(): List<ProductModel> {
+    return map {
+        ProductModel(
+            description = it.description,
+            discount = it.discount,
+            id = it.id,
+            image = it.image,
+            images = it.images,
+            inCart = it.in_cart,
+            inFavorites = it.in_favorites,
+            name = it.name,
+            oldPrice = it.old_price,
+            price = it.price
+        )
+    }
+}

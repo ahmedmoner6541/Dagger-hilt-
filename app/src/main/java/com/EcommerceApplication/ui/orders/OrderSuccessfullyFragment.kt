@@ -16,6 +16,7 @@ import com.example.kotlinproject.ui.base.BaseFragment
 import com.kadirkuruca.newsapp.util.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import kotlin.math.log
 
 @AndroidEntryPoint
 class OrderSuccessfullyFragment : BaseFragment<FragmentOrderSuccessfullyBinding>() {
@@ -31,15 +32,22 @@ class OrderSuccessfullyFragment : BaseFragment<FragmentOrderSuccessfullyBinding>
         binding.backToHomeBtn.setOnClickListener {
             findNavController().navigate(R.id.action_orderSuccessfullyFragment_to_homeFragment)
         }
-        setObservable()
+
+        binding.orderConstraintGroup.visibility = View.VISIBLE
+        binding.loaderLayout.loaderCard.visibility = View.GONE
+        binding.redirectHomeTimerTv.text =
+            getString(R.string.redirect_home_timer_text, "5")
+        countDownTimer.start()
+      //  setObservable()
 
     }
 
     private fun setObservable() {
-        viewModel.orderDetalils(args.orderId)
+        args.orderId?.let { viewModel.orderDetalils(it) }
         viewModel.orderDetails.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is Resource.Success -> {
+                    Log.d(TAG, "setObservable: order details ${it.value.data}")
                     binding.orderConstraintGroup.visibility = View.VISIBLE
                     binding.loaderLayout.loaderCard.visibility = View.GONE
                     binding.redirectHomeTimerTv.text =
@@ -73,46 +81,4 @@ class OrderSuccessfullyFragment : BaseFragment<FragmentOrderSuccessfullyBinding>
 
     override fun getFragmentBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentOrderSuccessfullyBinding =
         FragmentOrderSuccessfullyBinding.inflate(inflater, container, false)
-}/*    private fun setviews() {
-        var addressName = args.address.name
-        var addressId = args.address.id
-        var addressCity = args.address.city
-        var addressDetails = args.address.details
-        var addressNore = args.address.notes
-        var addressRegion = args.address.region
-
-        var orderPaymentMethod = args.addOrderRequst.paymentMethod
-        var orderUsePoints = args.addOrderRequst.usePoints
-        var orderDiscound = args.addOrderRequst.addressId
-
-        var orderPromocode:Int = 1
-
-
-//// باقي التفاصيل في صفحه تفاصيل الاوردر
-
-        binding.tvNameOrder.text = addressName
-        binding.tvNameOrder.text = addressName
-        binding.tvAddressOrder.text = "${addressCity + "," + addressNore + "," + addressDetails + "," + addressRegion}"
-        binding.tvThpeOfPaymentOrder.text = orderPaymentMethod.toString()
-        binding.tvDiscountOrder.text = orderDiscound.toString()
-        binding.radioButtonpromocode.setOnClickListener { view ->
-            if (view.id == R.id.radioButtonpromocode) {
-                binding.etPromocode.visable(true)
-            } else {
-                binding.etPromocode.visable(false)
-            }
-        }
-
-        var promoFromEt:String = binding.etPromocode.text.toString()
-
-        orderPromocode =  1
-
-
-        val addOrderRequest = AddOrderRequest(addressId, orderPaymentMethod, orderUsePoints, orderPromocode)
-        binding.buttontoSuccess.setOnClickListener {
-            viewModel.addOrder(addOrderRequest)
-        }
-
-        setObservable(addOrderRequest)
-
-    }*/
+}

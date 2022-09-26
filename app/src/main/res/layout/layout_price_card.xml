@@ -21,10 +21,11 @@
             android:id="@+id/price_items_label_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/dark_gray"
+            android:textColor="@color/black"
+
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Items(3)" />
+            tools:text="السعر" />
 
         <TextView
             android:id="@+id/price_items_amount_tv"
@@ -41,8 +42,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Shopping"
-            android:textColor="@color/dark_gray"
+            android:text="تكلفه الشحن "
+            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/price_items_label_tv" />
 
@@ -58,23 +59,62 @@
             tools:text="$123.45" />
 
         <TextView
-            android:id="@+id/price_charges_label_tv"
+            android:id="@+id/price_vat_label_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-             android:textColor="@color/dark_gray"
-            android:text="Import Charges"
+             android:textColor="@color/black"
+            android:text="الضريبه  "
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/price_shipping_label_tv" />
 
         <TextView
-            android:id="@+id/price_charges_amount_tv"
+            android:id="@+id/price_vat_amount_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="@+id/price_charges_label_tv"
+            app:layout_constraintBottom_toBottomOf="@+id/price_vat_label_tv"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/price_charges_label_tv"
+            app:layout_constraintTop_toTopOf="@+id/price_vat_label_tv"
+            tools:text="$123.45" />
+
+        <TextView
+            android:id="@+id/price_discound_label_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/black"
+            android:text="تخفيضات"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/price_vat_label_tv" />
+
+        <TextView
+            android:id="@+id/price_discound_amount_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/price_discound_label_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/price_discound_label_tv"
+            tools:text="$123.45" />
+        <TextView
+            android:id="@+id/price_pay_method_label_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/black"
+            android:text="طريقه الدفع"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/price_discound_label_tv" />
+
+        <TextView
+            android:id="@+id/price_pay_method_amount_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/price_pay_method_label_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/price_pay_method_label_tv"
             tools:text="$123.45" />
 
         <ImageView
@@ -85,7 +125,7 @@
             android:layerType="software"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/price_charges_label_tv"
+            app:layout_constraintTop_toBottomOf="@+id/price_pay_method_label_tv"
             app:srcCompat="@drawable/dotted_line_drawable" />
 
         <TextView
@@ -93,7 +133,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="total price"
+            android:text="السعر الكلي"
             android:textColor="@color/dark_gray"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"

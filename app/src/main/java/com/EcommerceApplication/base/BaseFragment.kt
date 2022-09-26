@@ -21,7 +21,7 @@ import javax.inject.Inject
 
 
 typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
-
+//Pull Up Method*********************************
 abstract class BaseFragment
 <VB : ViewBinding> : Fragment() {
 
@@ -106,7 +106,24 @@ abstract class BaseFragment
     }
 */
 
-    fun hideKeyboard(view: View) {
+/*
+    fun EditText.showKeyboard(
+    ) {
+        requestFocus()
+        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as
+                InputMethodManager
+        imm.showSoftInput(this, InputMethodManager.SHOW_IMPLICIT)
+    }
+*/
+
+    fun showKeyboard(view: View) {
+        try {
+            val imm = view.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
+        } catch (e: Exception) {
+
+        }
+    }fun hideKeyboard(view: View) {
         try {
             val imm = view.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(view.windowToken, 0)

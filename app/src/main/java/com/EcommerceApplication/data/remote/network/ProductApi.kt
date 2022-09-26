@@ -16,6 +16,7 @@ import com.EcommerceApplication.data.remote.response.order.details.OrderDetailsR
 import com.EcommerceApplication.data.remote.response.order.getOrders.GetOrdersResponse
 import com.EcommerceApplication.data.remote.response.product.ProductResponse
 import com.EcommerceApplication.data.remote.response.productDetailes.ProductDetailesResponse
+import com.EcommerceApplication.data.remote.response.searchProduct.SearchProductResponse
 import com.EcommerceApplication.data.remote.response.updateAddress.UpdateAddressResponse
 import retrofit2.http.*
 
@@ -26,6 +27,11 @@ interface ProductApi {
         @Header("Authorization") token: String,
     ): ProductResponse
 
+    @POST("products/search")
+    suspend fun getSearchProduct(
+        @Header("Authorization") token: String,
+        @Query("text") searchName: String,
+    ): SearchProductResponse
 
     @GET("favorites")
     suspend fun geFavorite(
@@ -97,7 +103,7 @@ interface ProductApi {
         ): GetOrdersResponse
 
     @POST("orders")
-    suspend fun addOrder(
+    suspend fun addOdrer(
         @Header("Authorization") token: String,
         @Body addOrderRequest: AddOrderRequest,
          ): addOrderResponse
@@ -108,5 +114,10 @@ interface ProductApi {
         @Path("id") id: String,
     ): OrderDetailsResponse
 
+    /*@GET("products/search")
+    suspend fun getProductSearching(
+        @Body nameSearchRequest:
+    ):productSearchRsponse
+    // pagination in category*/
 
 }
