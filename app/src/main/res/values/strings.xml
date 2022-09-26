@@ -9,6 +9,17 @@
     <string name="home">الصفحه الرئيسيه</string>
     <string name="search_placeholder_text">بحث عن المنتج</string>
 
+
+    <!--
+    <style name="TextAppearance.MyTheme.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
+        &lt;!&ndash;Your custom type style here&ndash;&gt;
+    </style>
+
+    <style name="myFilledBox" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="boxBackgroundColor">@color/blue_200</item>
+    </style>
+-->
+
     <style name="AppBarTitleStyle" parent="Widget.MaterialComponents.TextView">
 
         <item name="windowActionModeOverlay">true</item>
@@ -29,6 +40,22 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Home</string>
+    <string name="add_address_country_label_text">contry or region</string>
+    <string name="add_address_first_name_label_text">Frist Name</string>
+    <string name="add_address_last_name_label_text">"Lase Name "</string>
+    <string name="add_address_street_add_label_text">Street Address</string>
+    <string name="add_address_street_add2_label_text">Street Address 2 (Optinal)</string>
+    <string name="add_address_city_label_text">CIty</string>
+    <string name="add_address_state_label_text">"State/Province/Region "</string>
+    <string name="add_address_zipcode_label_text">Zip Code</string>
+    <string name="add_address_phone_label_text">Phone Number</string>
+    <string name="add_pro_error_empty">error message</string>
+    <string name="add_address_btn_text">Next</string>
+
+    <string name="my_label">You are on {label}</string>
+    <string name="address_Fragment_lable">"اختر عنوان للشحن "</string>
+    <string name="text_add_address_lable">"اضافه اوتعديل العنوان "</string>
+    <string name="redirect_home_timer_text">Redirecting to home in %s</string>
 
 
 </resources>

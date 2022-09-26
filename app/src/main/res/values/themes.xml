@@ -33,4 +33,11 @@
     <style name="Theme.HiltTutorial.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
+
+
+    <style name="TextAppearance.MyTheme.Headline6" parent="MaterialAlertDialog.Material3.Body.Text">
+        <!--Your custom type style here-->
+    </style>
+
+
 </resources>

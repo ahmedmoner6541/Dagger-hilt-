@@ -54,10 +54,90 @@
         <action
             android:id="@+id/action_cartFragment_to_detailsProductFragment"
             app:destination="@id/detailsProductFragment" />
+        <action
+            android:id="@+id/action_cartFragment_to_addressesFragment"
+            app:destination="@id/addressesFragment" />
     </fragment>
     <fragment
         android:id="@+id/favoriteProductsFragment"
         android:name="com.EcommerceApplication.ui.favorite.FavoriteProductsFragment"
         android:label="المفضله"
         tools:layout="@layout/fragment_favorite_products" />
+    <fragment
+        android:id="@+id/addressesFragment"
+        android:name="com.EcommerceApplication.ui.Adrerss.getAddress.AddressesFragment"
+        android:label="@string/address_Fragment_lable"
+        tools:layout="@layout/fragment_addresses" >
+        <action
+            android:id="@+id/action_addressesFragment_to_addUpdateAddressFragment"
+            app:destination="@id/addUpdateAddressFragment" />
+        <action
+            android:id="@+id/action_addressesFragment_to_selectPaymentOrderFragment"
+            app:destination="@id/selectPaymentOrderFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/addUpdateAddressFragment"
+        android:name="com.EcommerceApplication.ui.Adrerss.upsert.AddUpdateAddressFragment"
+        android:label="@string/text_add_address_lable"
+        tools:layout="@layout/fragment_add_update_address" >
+        <action
+            android:id="@+id/action_addUpdateAddressFragment_to_addressesFragment"
+            app:destination="@id/addressesFragment" />
+
+        <argument
+            android:name="update_address"
+            app:argType="com.EcommerceApplication.data.remote.response.getAdress.Addresses"
+            app:nullable="true" />
+        <argument
+            android:name="isAdd"
+            app:argType="boolean" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/selectPaymentOrderFragment"
+        android:name="com.EcommerceApplication.ui.orders.SelectPaymentOrderFragment"
+        android:label="اختر طريقه الدفع"
+        tools:layout="@layout/fragment_select_payment_orders" >
+        <argument
+            android:name="selectAddressId"
+            app:argType="string" />
+
+
+        <action
+            android:id="@+id/action_selectPaymentOrderFragment_to_orderSuccessfullyFragment"
+            app:destination="@id/orderSuccessfullyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderSuccessfullyFragment"
+        android:name="com.EcommerceApplication.ui.orders.OrderSuccessfullyFragment"
+        android:label="تمت اضافه الاوردر بنجاح"
+        tools:layout="@layout/fragment_order_successfully">
+        <action
+            android:id="@+id/action_orderSuccessfullyFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <argument
+            android:name="orderId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/OrdersFragment"
+        android:name="com.EcommerceApplication.ui.orders.OrdersFragment"
+        android:label="الاوردرات "
+        tools:layout="@layout/fragment_orders" >
+        <action
+            android:id="@+id/action_OrdersFragment_to_orderDetailsFragment"
+            app:destination="@id/orderDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderDetailsFragment"
+        android:name="com.EcommerceApplication.ui.orders.OrderDetailsFragment"
+        android:label="fragment_order_details"
+        tools:layout="@layout/fragment_order_details" >
+        <argument
+            android:name="orderId"
+            app:argType="string" />
+    </fragment>
+
+
 </navigation>

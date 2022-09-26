@@ -35,26 +35,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(),
 
     @Inject
     lateinit var viewModel: ProductViewModel
-
-
     lateinit var adapter: ProductAdapter
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
         setupRecyclerView()
         setupObservers()
 
         binding.homeFabAddProduct.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_cartFragment)
-
         }
-
     }
-
-
 
     // TODO: get date CACHING
     private fun setupObservers() {

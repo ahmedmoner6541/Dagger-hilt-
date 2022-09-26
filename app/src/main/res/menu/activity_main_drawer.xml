@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view"
+
+    >
+
+    <group android:checkableBehavior="all">
+
+        <item
+            android:id="@+id/homeFragment"
+            android:checkable="true"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="home" />
+        <item
+            android:id="@+id/favoriteProductsFragment"
+            android:checkable="true"
+            android:icon="@drawable/ic_favorite_outlined_24"
+            android:title="favorite" />
+        <item
+            android:id="@+id/cartFragment"
+            android:checkable="true"
+            android:icon="@drawable/ic_add_shopping_cart_24"
+            android:title="cart" />
+        <item
+            android:id="@+id/addressesFragment"
+            android:checkable="true"
+            android:icon="@drawable/ic_baseline_location_on_24"
+            android:title="addresses" />
+        <item
+            android:id="@+id/OrdersFragment"
+            android:checkable="true"
+            android:icon="@drawable/ic_baseline_shopping_cart_24"
+            android:title="orders" />
+
+
+    </group>
+
+</menu>
