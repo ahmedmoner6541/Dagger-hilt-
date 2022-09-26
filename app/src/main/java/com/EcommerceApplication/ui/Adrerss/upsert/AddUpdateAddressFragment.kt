@@ -81,10 +81,10 @@ class AddUpdateAddressFragment : BaseFragment<FragmentAddUpdateAddressBinding>()
     private fun onUpdateAddress(updateAddress: Addresses) {
 
         val newName = binding.etNamePersonAddress.text.toString()
-        val newCity = binding.etNamePersonAddress.text.toString()
-        val newRegion = binding.etNamePersonAddress.text.toString()
-        val newDetails = binding.etNamePersonAddress.text.toString()
-        val newNotes = binding.etNamePersonAddress.text.toString()
+        val newCity = binding.etCityPirsonAddress.text.toString()
+        val newRegion = binding.etRegionsPersonAddress.text.toString()
+        val newDetails = binding.etDetailsPesonAddress.text.toString()
+        val newNotes = binding.etNotePesonAddress.text.toString()
 
         var newAddress = UpdateAddressRequest(newName, newCity, newRegion, newDetails, 0.0, 0.0, newNotes)
 
@@ -94,8 +94,7 @@ class AddUpdateAddressFragment : BaseFragment<FragmentAddUpdateAddressBinding>()
     private fun setViewsUpdate(updateAddress: Addresses) {
         binding.etNamePersonAddress.setText(updateAddress.name)
         binding.etCityPirsonAddress.setText(updateAddress.city)
-        binding.etPhonePersonAddress.setText("")
-        binding.etRegionsPersonAddress.setText(updateAddress.region)
+         binding.etRegionsPersonAddress.setText(updateAddress.region)
         binding.etNotePesonAddress.setText(updateAddress.notes)
         binding.etDetailsPesonAddress.setText(updateAddress.details)
 
@@ -127,10 +126,10 @@ class AddUpdateAddressFragment : BaseFragment<FragmentAddUpdateAddressBinding>()
     private fun onAddAddress() {
         //todo check if any variabel is null or no
         val name = binding.etNamePersonAddress.text.toString()
-        val city = binding.etNamePersonAddress.text.toString()
-        val region = binding.etNamePersonAddress.text.toString()
-        val details = binding.etNamePersonAddress.text.toString()
-        val notes = binding.etNamePersonAddress.text.toString()
+        val city = binding.etCityPirsonAddress.text.toString()
+        val region = binding.etRegionsPersonAddress.text.toString()
+        val details = binding.etDetailsPesonAddress.text.toString()
+        val notes = binding.etNotePesonAddress.text.toString()
 
         var newAddress = AddAddressRequest(name, city, region, details, 0.0, 0.0, notes)
         viewModel.addAddress(newAddress)

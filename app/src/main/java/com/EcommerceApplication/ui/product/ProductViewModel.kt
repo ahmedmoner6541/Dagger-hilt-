@@ -11,6 +11,7 @@ import com.EcommerceApplication.data.remote.response.cartUpdate.CartUpdateQuanti
 import com.EcommerceApplication.data.remote.response.favorite.addInFavorite.FavoriteAddReposnse
 import com.EcommerceApplication.data.remote.response.favorite.getFavorites.FavoriteProductResponse
 import com.EcommerceApplication.data.remote.response.product.ProductResponse
+import com.EcommerceApplication.data.remote.response.searchProduct.SearchProductResponse
 import com.kadirkuruca.newsapp.util.Resource
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -31,6 +32,16 @@ class ProductViewModel @Inject constructor(
     fun getAllProductApi()= viewModelScope.launch {
         _productApi.value = Resource.Loading
         _productApi.value = productRepository.getAllProductApi()
+    }
+
+    //getSearchProductName
+    private val _searchProductnameApi: MutableLiveData<Resource<SearchProductResponse>> = MutableLiveData()
+    val searchProductnameApi: LiveData<Resource<SearchProductResponse>>
+        get() = _searchProductnameApi
+
+    fun getSearchProductName(productName: String)= viewModelScope.launch {
+        _searchProductnameApi.value = Resource.Loading
+        _searchProductnameApi.value = productRepository.getSearchProduct(productName)
     }
 
     // get favorite date

@@ -13,9 +13,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.EcommerceApplication.R
 import com.EcommerceApplication.adapter.CartAdapter
 import com.EcommerceApplication.data.remote.response.CartItem
+import com.EcommerceApplication.data.remote.response.toProductAdapterModel
 import com.EcommerceApplication.databinding.FragmentCartBinding
 import com.EcommerceApplication.databinding.LayoutCircularLoaderBinding
+import com.EcommerceApplication.ui.product.HomeFragmentDirections
 import com.EcommerceApplication.ui.product.ProductViewModel
+import com.EcommerceApplication.util.ProductModel
 import com.EcommerceApplication.util.Snackbar
 import com.EcommerceApplication.util.handleApiError
 import com.example.kotlinproject.ui.base.BaseFragment
@@ -44,17 +47,15 @@ class CartFragment : BaseFragment<FragmentCartBinding>(),
 
         setupRecyclerView()
         ObserversCart()
-        setSwipeRecycler()
-
-        binding.cartCheckOutBtn.setOnClickListener {
+        setDeleteFromSwipeRecycler()
+         binding.cartCheckOutBtn.setOnClickListener {
           findNavController().navigate(R.id.action_cartFragment_to_addressesFragment)
 
         }
 
     }
 
-
-    private fun setSwipeRecycler() {
+    private fun setDeleteFromSwipeRecycler() {
         val simpleCallback = object :
             ItemTouchHelper.SimpleCallback(
                 0,
@@ -72,7 +73,7 @@ class CartFragment : BaseFragment<FragmentCartBinding>(),
                 val position = viewHolder.adapterPosition
                 when (direction) {
                     ItemTouchHelper.LEFT -> {
-                        var productId = adapter.getProductAt(position).product.id.toString()
+                        var productId = adapter.getProductAt(position).id.toString()
 
                         viewModel.addOrDeleteProductToCartById(productId)
                         viewModel.addOrDeleteProductToCartById.observe(viewLifecycleOwner, Observer {
@@ -114,7 +115,7 @@ class CartFragment : BaseFragment<FragmentCartBinding>(),
             when (it) {
                 is Resource.Success -> {
                     hideProgress(binding.loaderLayout)
-                    adapter.setData(it.value.data.cart_items)
+                    adapter.setData(it.value.data.cart_items.toProductAdapterModel())
                 }
                 is Resource.Loading -> {
                     Log.d(TAG, "onViewCreated: Loading")
@@ -143,15 +144,21 @@ class CartFragment : BaseFragment<FragmentCartBinding>(),
     override fun getFragmentBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentCartBinding =
         FragmentCartBinding.inflate(inflater, container, false)
 
-    override fun upDateQuantityProductInCart(cartItem: CartItem, totalQuantity: Int) {
+    override fun onItemClick(cartItem: ProductModel, productIdInCart: Int, quantity: Int) {
+
+        val action = CartFragmentDirections.actionCartFragmentToDetailsProductFragment(cartItem, "cart")
+        findNavController().navigate(action)
+    }
+
+    override fun upDateQuantityProductInCart(cartItem: ProductModel, totalQuantity: Int) {
         // TODO:   notifyItemRangeChanged(position, mData.size());
         lifecycleScope.launch {
-            viewModel.updateProductQuantityInCart(cartItem.id, totalQuantity)
+            viewModel.updateProductQuantityInCart(cartItem.cartId, totalQuantity)
         }
         viewModel.updateProductQuantityInCart.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is Resource.Success -> {
-                    Log.d(TAG, "upDateQuantityProductInCart: Success${it.value.data.cart.quantity}")
+                  //  Log.d(TAG, "upDateQuantityProductInCart: Success${it.value.data.cart.quantity}")
                     ObserversCart()
                 }
                 is Resource.Loading -> {
@@ -166,12 +173,12 @@ class CartFragment : BaseFragment<FragmentCartBinding>(),
 
 
 
-    override fun addTofavoriteItemClick(cartItem: CartItem) {
-        viewModel.setProductToFavoriteById(cartItem.product.id.toString())
+    override fun addTofavoriteItemClick(cartItem: ProductModel) {
+        viewModel.setProductToFavoriteById(cartItem.id.toString()) // product id
         viewModel.addFav.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is Resource.Success -> {
-
+                    Log.d(TAG, "addTofavoriteItemClick: ${it.value.message}")
                     if (it.value.message.equals(getString(R.string.Added))) {
                         requireView().Snackbar(getString(R.string.Added))
                     }
@@ -195,13 +202,34 @@ class CartFragment : BaseFragment<FragmentCartBinding>(),
     }
 
     override fun deleteItemInCartClick(
-        cartItem: CartItem,
+            cartItem:ProductModel,
         productIdInCart: Int,
         quantity: Int,
         itemBinding: LayoutCircularLoaderBinding,
     ) {
-        Log.d(TAG, "deleteItemInCartClick: ")
-    }
+        viewModel.addOrDeleteProductToCartById(productIdInCart.toString())
+        viewModel.addOrDeleteProductToCartById.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is Resource.Success -> {
+                    var productIdInCart = it.value.data.id
+
+                    ObserversCart()
+                    hideProgress(binding.loaderLayout)
+                    Log.d(TAG, "onViewCreated:addToCart Success${productIdInCart}")
+                }
+                is Resource.Loading -> {
+                    showProgress(binding.loaderLayout)
+
+                    Log.d(TAG, "onViewCreated:addToCart Loading")
+                }
+                is Resource.Failure -> {
+                    showProgress(binding.loaderLayout)
+
+                    Log.d(TAG, "onViewCreated:addToCart Failure")
+                }
+            }
+        })
+     }
 
 
 }

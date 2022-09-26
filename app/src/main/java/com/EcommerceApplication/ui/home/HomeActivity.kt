@@ -19,14 +19,21 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.EcommerceApplication.R
+import com.EcommerceApplication.data.local.shared.TokenManager
 import com.EcommerceApplication.databinding.ActivityHomeBinding
 import com.EcommerceApplication.util.visable
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeActivity : AppCompatActivity()  {
+    
+    //will deletet
+    @Inject
+    lateinit var tokenManager: TokenManager
+
     private val TAG = "HomeActivity"
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityHomeBinding
@@ -38,7 +45,7 @@ class HomeActivity : AppCompatActivity()  {
 
         setSupportActionBar(binding.appBarMain.toolbar)
 
-
+        Log.d(TAG, "onCreate: tokenManager = ${tokenManager.getToken()}")
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView

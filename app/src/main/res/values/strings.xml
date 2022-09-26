@@ -3,8 +3,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="Added">"تمت الإضافة للمنتجات المفضله بنجاح"</string>
-    <string name="Deleted">تم الحذف من المفضله بنجاح</string>
+    <string name="Added">تمت الإضافة بنجاح"</string>
+    <string name="Deleted">تم الحذف بنجاح</string>
     <string name="top_bar">Tob App bar</string>
     <string name="home">الصفحه الرئيسيه</string>
     <string name="search_placeholder_text">بحث عن المنتج</string>
