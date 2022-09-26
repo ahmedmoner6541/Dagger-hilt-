@@ -3,11 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_nav"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/homeFragment"
+    >
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.EcommerceApplication.ui.product.ProductFragment"
-        android:label="fragment_home"
+        android:name="com.EcommerceApplication.ui.product.HomeFragment"
+        android:label="الصفحه الرئيسيه"
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_detailsProductFragment"
@@ -16,11 +17,14 @@
         <action
             android:id="@+id/action_homeFragment_to_cartFragment"
             app:destination="@id/cartFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_favoriteProductsFragment"
+            app:destination="@id/favoriteProductsFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsProductFragment"
         android:name="com.EcommerceApplication.ui.detailsProduct.ProductDetailsFragment"
-        android:label="fragment_details_product"
+        android:label="تفاصيل المنتج"
         tools:layout="@layout/fragment_product_details"
        >
         <argument
@@ -34,15 +38,16 @@
             app:popUpTo="@id/homeFragment"
         />
         <argument
-            android:name="cartItem"
-            app:argType="com.EcommerceApplication.data.remote.response.cart.CartItem"
+            android:name="cartItemProduct"
+            app:argType="com.EcommerceApplication.data.remote.response.CartItem"
             app:nullable="true" />
+
     </fragment>
 
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.EcommerceApplication.ui.cart.CartFragment"
-        android:label="fragment_cart"
+        android:label=" سله المنتجات"
         tools:layout="@layout/fragment_cart">
 
 
@@ -50,4 +55,9 @@
             android:id="@+id/action_cartFragment_to_detailsProductFragment"
             app:destination="@id/detailsProductFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/favoriteProductsFragment"
+        android:name="com.EcommerceApplication.ui.favorite.FavoriteProductsFragment"
+        android:label="المفضله"
+        tools:layout="@layout/fragment_favorite_products" />
 </navigation>

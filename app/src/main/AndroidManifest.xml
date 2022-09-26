@@ -7,14 +7,17 @@
     <application
         android:name=".di.Myapplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_baseline_format_list_bulleted_24"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/ic_baseline_format_list_bulleted_24"
         android:supportsRtl="true"
         android:theme="@style/Theme.HiltTutorial">
         <activity
             android:name=".ui.home.HomeActivity"
-            android:exported="false" />
+            android:exported="true"
+
+
+            />
         <activity
             android:name=".ui.auth.AuthActivity"
             android:exported="true">

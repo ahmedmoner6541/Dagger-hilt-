@@ -2,4 +2,33 @@
     <string name="app_name">EcommerceApplication</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="Added">"تمت الإضافة للمنتجات المفضله بنجاح"</string>
+    <string name="Deleted">تم الحذف من المفضله بنجاح</string>
+    <string name="top_bar">Tob App bar</string>
+    <string name="home">الصفحه الرئيسيه</string>
+    <string name="search_placeholder_text">بحث عن المنتج</string>
+
+    <style name="AppBarTitleStyle" parent="Widget.MaterialComponents.TextView">
+
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textColor">@color/blue_200</item>
+
+
+    </style>
+
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+
+
 </resources>
